@@ -1,0 +1,40 @@
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.container {
+  text-align: center;
+}
+
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+.container-left {
+  text-align: center;
+}
+
+.container-right {
+  text-align: center;
+}
+
+.container-input {
+  text-align: center;
+}
+
+.input {
+  width: 50%;
+  text-align: center;
+}
+
+.container-btn-continuar {
+  text-align: center;
+}

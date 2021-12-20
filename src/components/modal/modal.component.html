@@ -1,0 +1,92 @@
+<div>
+<div class="modal-header">
+  <div class="container">
+  <h4 class="modal-title" id="modal-basic-title">Process Shipment</h4>
+  </div>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="row">
+  <div class="container-left col-4">
+    <label class = "form-label">Total Value (USD):</label>
+    <h2>{{this.valorTotal}}</h2>
+    <br>
+    <label class = "form-label">Total Pending (USD):</label>
+    <h3>{{this.valorPen}}</h3>  
+  </div>
+  <div class="container-right col-6">
+    <div class="container">
+      <form [formGroup]="form" (ngSubmit)="AddItem()">
+        <div class="row">
+          <label class="form-label">Payment type</label>
+          <div ngbDropdown class="d-inline-block">
+            <select formControlName="_typePay" [(ngModel)]="newItem.typePay">  
+              <option *ngFor="let data of selectPayType" [ngValue]="data.name" >             
+                {{data.name}}
+              </option>  
+            </select> 
+          </div>
+          <!-- <input placeholder="typePay" [(ngModel)]="newItem.typePay"
+	      		formControlName="typePay" name="typePay"> -->
+        </div>
+        <br>
+        <div class="row">
+          <label class="form-label">Value</label>
+          <div class="container-input">
+            <input class="input"  [(ngModel)]="newItem.value"
+              formControlName="_value">
+          </div>
+        </div>
+      </form>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div *ngIf="btnSave === false"  >
+          <button color="primary" [disabled]="form.invalid" (click)="AddItem()" >Add Payment</button>
+        </div>
+        <div *ngIf="btnSave === true"  >
+          <button color="primary" [disabled]="form.invalid" (click)="EditItem()" >Save</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Value</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of myItems;let i = index">
+          <td>{{ data.typePay }}</td>
+          <td>{{ data.value }}</td>
+          <td class="overflow-hidden">
+            <div container="body">
+              <button (click)="edit(data,i)" class="btn btn-outline-primary btn-sm">Edit</button>
+            </div>
+          </td>
+          <td class="overflow-hidden">
+            <div>
+              <button (click)="delete(i)" class="btn btn-outline-primary btn-sm">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container-btn-continuar">
+  <button class="action-button detail-button" color="primary" [disabled]="btnContinue" (click)="continue()" >Continue</button>
+</div>
+<br>
+<br>
+<br>
+</div>
